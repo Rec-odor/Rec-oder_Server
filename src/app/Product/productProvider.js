@@ -60,6 +60,31 @@ exports.retrieveProduct = async function(productId){
   return productResult;
 }
 
+
+exports.retrieveRecProduct = async function(productId){
+  const connection = await pool.getConnection(async (conn) => conn);
+  const productRecResult = await productDao.selectRecProduct(connection, productId);
+  connection.release;
+
+  return productRecResult;
+}
+
+exports.retrieveTopRecProduct = async function(productId){
+  const connection = await pool.getConnection(async (conn) => conn);
+  const productTopRecResult = await productDao.selectTopRecProduct(connection, productId);
+  connection.release;
+
+  return productTopRecResult;
+}
+
+exports.retrieveBaseRecProduct = async function(productId){
+  const connection = await pool.getConnection(async (conn) => conn);
+  const productBaseRecResult = await productDao.selectBaseRecProduct(connection, productId);
+  connection.release;
+
+  return productBaseRecResult;
+}
+
 exports.retrieveQuestionResult = async function(result){
   const connection = await pool.getConnection(async (conn) => conn);
   const questionResult = await productDao.selectQuestionResult(connection, result);
