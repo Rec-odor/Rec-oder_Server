@@ -1,0 +1,4 @@
+config/secret.js
+config/database.js
+node_modules
+log

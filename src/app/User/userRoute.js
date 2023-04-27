@@ -1,0 +1,26 @@
+module.exports = function (app) {
+    const user = require('./userController');
+    // const jwtMiddleware = require('../../../config/jwtMiddleware');
+
+
+    /* 
+
+    // <----------------- 로그인 ----------------->
+    // GET 카카오톡 로그인 페이지 이동
+    app.get("/auth/kakao", passport.authenticate("kakao-login"));
+
+    // GET User 정보 수신
+    app.get(
+        "/auth/kakao/callback",
+        passport.authenticate("kakao-login", {
+            failureRedirect: "/",
+        }),
+        user.kakaoLogin
+    );
+
+    // GET 로그아웃
+    app.get("/auth/logout", user.kakaoLogout);
+
+    */
+
+};
