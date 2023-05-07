@@ -10,6 +10,7 @@ passport.use(
       clientID: secret.REST_API_KEY,
       prompt: "login",
       callbackURL: secret.REDIRECT_URI,
+      clientSecret: secret.Client_Secret,
     },
     async (accessToken, refreshToken, profile, done) => {
       const userToken = {

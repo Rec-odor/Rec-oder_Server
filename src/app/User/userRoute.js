@@ -1,9 +1,11 @@
 module.exports = function (app) {
     const user = require('./userController');
+    const auth = require("./auth");
+    const passport = require("passport");
+    const userProvider = require("./userProvider");
+    
     // const jwtMiddleware = require('../../../config/jwtMiddleware');
 
-
-    /* 
 
     // <----------------- 로그인 ----------------->
     // GET 카카오톡 로그인 페이지 이동
@@ -21,6 +23,6 @@ module.exports = function (app) {
     // GET 로그아웃
     app.get("/auth/logout", user.kakaoLogout);
 
-    */
+
 
 };
