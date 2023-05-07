@@ -7,7 +7,7 @@ passport.use(
   "kakao-login",
   new KakaoStrategy(
     {
-      clientID: secret.REST_API_KEY,
+      clientID: secret.KAKAO_API_KEY,
       prompt: "login",
       callbackURL: secret.REDIRECT_URI,
       clientSecret: secret.Client_Secret,
