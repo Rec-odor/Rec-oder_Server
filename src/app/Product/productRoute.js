@@ -10,5 +10,7 @@ module.exports = function(app){
     app.get('/search/:keyword', product.searchItem);
 
     app.post('/chatGPT/qna', product.askQuestion);
+    app.get('/chatGPT/qna', product.getAnswer);
+
 
 };

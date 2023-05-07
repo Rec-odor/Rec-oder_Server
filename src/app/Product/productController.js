@@ -89,24 +89,23 @@ exports.searchItem = async function (req, res){
 
 }
 
-
-
 exports.askQuestion = async function (req, res){
-//    const prompt = req.body;
-    const prompt = "향수 브랜드 조말론에 대해서 알려줘";             // 변수명 변경 가능
-    if(!req.body)
-        return res.send('no');
+    const { prompt } = req.body;
+
     if(!prompt)
-        return res.send('no');
+        return res.send(response(baseResponse.FAILURE));              // 수정
     const response = await callChatGPT(prompt);
     const answer = await callChatGPT(response + "\n이 내용 100자 이내로 요약해줘");
 
     if(answer){
-        console.log(answer);
-        return res.send({'answer' : answer});
+        req.session.answer = answer;
+        return res.redirect('/chatGPT/qna');
     } else {
-        console.log('err');
-        res.status(500).json({'error':'Fail'});
-        // res.send(baseResponse.SERVER_ERROR);
+        return res.send(response(baseResponse.FAILURE));
     }
+}
+
+exports.getAnswer = async function (req, res){
+    const answer = req.session.answer;
+    return res.send(response(baseResponse.SUCCESS, {answer: answer}));
 }
