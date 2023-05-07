@@ -13,7 +13,8 @@ exports.allProducts = async function (req, res){
 
     if(order =="like"){
 
-        console.log("a");
+        const productListResult = await productProvider.retrieveProductListLikes();
+        return res.send(response(baseResponse.SUCCESS, productListResult));
 
     }
     else if(order == "hits"){

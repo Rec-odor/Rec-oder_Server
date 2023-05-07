@@ -9,6 +9,23 @@ async function selectProductList(connection){
   return productRows;
 }
 
+// 전 제품 정보 조회 - 좋아요순
+async function selectProductListLikes(connection){
+  const selectProductListQuery = `
+    SELECT p.ProductID, pimg.ImageURL, p.Name, p.Name, p.Brand, p.Price
+    FROM Product p
+    JOIN (
+      SELECT ProductID
+      FROM UserLike
+      GROUP BY ProductID
+      ORDER BY COUNT(*) DESC
+    ) ul ON p.ProductID = ul.ProductID
+    JOIN Product_Image pimg ON p.ProductID = pimg.ProductID;
+  `;
+  const [productRows] = await connection.query(selectProductListQuery);
+  return productRows;
+}
+
 // 전 제품 정보 조회 - 조회수순
 async function selectProductListHits(connection){
   const selectProductListQuery = `
@@ -195,6 +212,7 @@ async function selectSearchResult(connection, keyword){
 
 module.exports = {
   selectProductList,
+  selectProductListLikes,
   selectProductListHits,
   selectProductListHighprice,
   selectProductListLowprice,

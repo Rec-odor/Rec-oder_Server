@@ -12,6 +12,14 @@ exports.retrieveProductList = async function(){
   return productListResult;
 }
 
+exports.retrieveProductListLikes = async function(){
+  const connection = await pool.getConnection(async (conn) => conn);
+  const productListResult = await productDao.selectProductListLikes(connection);
+  connection.release;
+
+  return productListResult;
+}
+
 exports.retrieveProductListHits = async function(){
   const connection = await pool.getConnection(async (conn) => conn);
   const productListResult = await productDao.selectProductListHits(connection);

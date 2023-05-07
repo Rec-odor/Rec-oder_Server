@@ -23,3 +23,10 @@ exports.kakaoLogout = async function (req, res) {
         return res.redirect("/");
     });
 };
+
+exports.getUserLikes = async function (req,res){
+    const userId = req.params.userId;
+    const userLikeResult = await userProvider.retrieveUserLikes(userId);     
+
+    return res.send(response(baseResponse.SUCCESS, userLikeResult));
+}
