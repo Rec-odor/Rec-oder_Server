@@ -197,7 +197,7 @@ async function selectSearchResult(connection, keyword) {
     WHERE Name LIKE '%${keyword}%' or Top LIKE '%${keyword}%' or Middle LIKE '%${keyword}%' or Base LIKE '%${keyword}%' or Brand LIKE '%${keyword}%';
   `;
   const [searchResultInfo] = await connection.query(selectKeywordQuery, keyword);
-  return searchResultInfo[0];
+  return searchResultInfo;
 }
 
 
