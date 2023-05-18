@@ -70,7 +70,7 @@ async function selectProductListABC(connection) {
 }
 
 // 전 제품 정보 조회 - 가나다 역순
-async function selectProductListZXY(connection) {
+async function selectProductListZYX(connection) {
   const selectProductListQuery = `
     SELECT ProductID, Name, Brand, Price, ImageURL
     FROM Product
@@ -211,7 +211,7 @@ module.exports = {
   selectProductListHighprice,
   selectProductListLowprice,
   selectProductListABC,
-  selectProductListZXY,
+  selectProductListZYX,
 
   selectProduct,
   selectRecProduct,

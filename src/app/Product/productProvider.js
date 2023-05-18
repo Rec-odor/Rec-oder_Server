@@ -52,9 +52,9 @@ exports.retrieveProductListABC = async function() {
   return productListResult;
 }
 
-exports.retrieveProductListZXY = async function() {
+exports.retrieveProductListZYX = async function() {
   const connection = await pool.getConnection(async (conn) => conn);
-  const productListResult = await productDao.selectProductListZXY(connection);
+  const productListResult = await productDao.selectProductListZYX(connection);
   connection.release;
 
   return productListResult;

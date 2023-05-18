@@ -41,9 +41,9 @@ exports.allProducts = async function (req, res){
         return res.send(response(baseResponse.SUCCESS, productListResult));
 
     }
-    else if(order == "zxy"){
+    else if(order == "zyx"){
 
-        const productListResult = await productProvider.retrieveProductListZXY();
+        const productListResult = await productProvider.retrieveProductListZYX();
         return res.send(response(baseResponse.SUCCESS, productListResult));
         
     }
