@@ -119,14 +119,25 @@ async function selectRecProduct(connection, productId){
   const selectRecProductQuery = `
     SELECT 
       rp.ProductID, 
+      rp.Rec1,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec1), '') AS Rec1_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec1), '') AS Rec1_Name,
+      rp.Rec2,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec2), '') AS Rec2_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec2), '') AS Rec2_Name,
+      rp.Rec3,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec3), '') AS Rec3_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec3), '') AS Rec3_Name,
+      rp.Rec4,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec4), '') AS Rec4_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec4), '') AS Rec4_Name,
+      rp.Rec5,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec5), '') AS Rec5_ImageURL,
-      COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec6), '') AS Rec6_ImageURL
-    FROM 
-      RecProduct rp
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec5), '') AS Rec5_Name,
+      rp.Rec6,
+      COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec6), '') AS Rec6_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec6), '') AS Rec6_Names
+    FROM RecProduct rp
     WHERE rp.ProductID = ${productId};
   `;
   const [productInfo] = await connection.query(selectRecProductQuery, productId);
@@ -138,14 +149,25 @@ async function selectTopRecProduct(connection, productId){
   const selectTopRecProductQuery = `
   SELECT 
       rp.ProductID, 
+      rp.Rec1,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec1), '') AS Rec1_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec1), '') AS Rec1_Name,
+      rp.Rec2,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec2), '') AS Rec2_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec2), '') AS Rec2_Name,
+      rp.Rec3,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec3), '') AS Rec3_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec3), '') AS Rec3_Name,
+      rp.Rec4,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec4), '') AS Rec4_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec4), '') AS Rec4_Name,
+      rp.Rec5,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec5), '') AS Rec5_ImageURL,
-      COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec6), '') AS Rec6_ImageURL
-    FROM 
-    TopRecProduct rp
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec5), '') AS Rec5_Name,
+      rp.Rec6,
+      COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec6), '') AS Rec6_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec6), '') AS Rec6_Names
+    FROM TopRecProduct rp
     WHERE rp.ProductID = ${productId};
   `;
   const [productInfo] = await connection.query(selectTopRecProductQuery, productId);
@@ -157,14 +179,25 @@ async function selectBaseRecProduct(connection, productId){
   const selectBaseRecProductQuery = `
     SELECT 
       rp.ProductID, 
+      rp.Rec1,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec1), '') AS Rec1_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec1), '') AS Rec1_Name,
+      rp.Rec2,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec2), '') AS Rec2_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec2), '') AS Rec2_Name,
+      rp.Rec3,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec3), '') AS Rec3_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec3), '') AS Rec3_Name,
+      rp.Rec4,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec4), '') AS Rec4_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec4), '') AS Rec4_Name,
+      rp.Rec5,
       COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec5), '') AS Rec5_ImageURL,
-      COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec6), '') AS Rec6_ImageURL
-    FROM 
-      BaseRecProduct rp
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec5), '') AS Rec5_Name,
+      rp.Rec6,
+      COALESCE((SELECT pi.ImageURL FROM Product_Image pi WHERE pi.ProductID = rp.Rec6), '') AS Rec6_ImageURL,
+      COALESCE((SELECT p.Name FROM Product p WHERE p.ProductID = rp.Rec6), '') AS Rec6_Names
+    FROM BaseRecProduct rp
     WHERE rp.ProductID = ${productId};
   `;
   const [productInfo] = await connection.query(selectBaseRecProductQuery, productId);
