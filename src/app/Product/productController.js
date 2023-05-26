@@ -60,15 +60,12 @@ exports.allProducts = async function (req, res){
 exports.getProduct = async function (req, res){
 
     const productId = req.params.productId;
-    const productResult = await productProvider.retrieveProduct(productId);     
-    const productRecResult = await productProvider.retrieveRecProduct(productId);
-    const productTopRecResult = await productProvider.retrieveTopRecProduct(productId);
-    const productBaseRecResult = await productProvider.retrieveBaseRecProduct(productId);
+    const productResult = await productProvider.retrieveProduct(productId);
 
     // 조회수 증가
     const hits = await productService.updateHits(productId);                     
 
-    return res.send(response(baseResponse.SUCCESS, {productInfo: productResult, recInfo: productRecResult, topRecInfo: productTopRecResult, baseRecInfo: productBaseRecResult}));
+    return res.send(response(baseResponse.SUCCESS, productResult));
 }
 
 // 설문 결과 조회

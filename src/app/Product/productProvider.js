@@ -62,7 +62,7 @@ exports.retrieveProductListZYX = async function() {
 
 exports.retrieveProduct = async function(productId){
   const connection = await pool.getConnection(async (conn) => conn);
-  const productResult = await productDao.selectProduct(connection, productId);
+  const productResult = await productDao.selectProductAndRec(connection, productId);
   connection.release;
 
   return productResult;
