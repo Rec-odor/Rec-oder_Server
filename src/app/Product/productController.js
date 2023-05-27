@@ -60,7 +60,7 @@ exports.allProducts = async function (req, res){
 exports.getProduct = async function (req, res){
 
     const productId = req.params.productId;
-    const productResult = await productProvider.retrieveProduct(productId);
+    const productResult = await productProvider.retrieveProductAndRec(productId);
 
     // 조회수 증가
     const hits = await productService.updateHits(productId);                     

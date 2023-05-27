@@ -24,6 +24,7 @@ module.exports = function (app) {
     app.get("/auth/logout", user.kakaoLogout);
 
     app.get("/likes/:userId", user.getUserLikes);
-
+    app.post("/likes/:userId/:productId", user.postUserLikes);
+    app.delete("/likes/:userId/:productId", user.deleteUserLikes);
 
 };

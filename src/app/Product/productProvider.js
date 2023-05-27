@@ -4,7 +4,7 @@ const productDao = require("./productDao");
 
 // Provider: Read 비즈니스 로직 처리
 
-exports.retrieveProductList = async function(){
+exports.retrieveProductList = async function () {
   const connection = await pool.getConnection(async (conn) => conn);
   const productListResult = await productDao.selectProductList(connection);
   connection.release;
@@ -12,7 +12,7 @@ exports.retrieveProductList = async function(){
   return productListResult;
 }
 
-exports.retrieveProductListLikes = async function(){
+exports.retrieveProductListLikes = async function () {
   const connection = await pool.getConnection(async (conn) => conn);
   const productListResult = await productDao.selectProductListLikes(connection);
   connection.release;
@@ -20,7 +20,7 @@ exports.retrieveProductListLikes = async function(){
   return productListResult;
 }
 
-exports.retrieveProductListHits = async function(){
+exports.retrieveProductListHits = async function () {
   const connection = await pool.getConnection(async (conn) => conn);
   const productListResult = await productDao.selectProductListHits(connection);
   connection.release;
@@ -28,7 +28,7 @@ exports.retrieveProductListHits = async function(){
   return productListResult;
 }
 
-exports.retrieveProductListHighprice = async function(){
+exports.retrieveProductListHighprice = async function () {
   const connection = await pool.getConnection(async (conn) => conn);
   const productListResult = await productDao.selectProductListHighprice(connection);
   connection.release;
@@ -36,7 +36,7 @@ exports.retrieveProductListHighprice = async function(){
   return productListResult;
 }
 
-exports.retrieveProductListLowprice = async function(){
+exports.retrieveProductListLowprice = async function () {
   const connection = await pool.getConnection(async (conn) => conn);
   const productListResult = await productDao.selectProductListLowprice(connection);
   connection.release;
@@ -44,7 +44,7 @@ exports.retrieveProductListLowprice = async function(){
   return productListResult;
 }
 
-exports.retrieveProductListABC = async function() {
+exports.retrieveProductListABC = async function () {
   const connection = await pool.getConnection(async (conn) => conn);
   const productListResult = await productDao.selectProductListABC(connection);
   connection.release;
@@ -52,7 +52,7 @@ exports.retrieveProductListABC = async function() {
   return productListResult;
 }
 
-exports.retrieveProductListZYX = async function() {
+exports.retrieveProductListZYX = async function () {
   const connection = await pool.getConnection(async (conn) => conn);
   const productListResult = await productDao.selectProductListZYX(connection);
   connection.release;
@@ -60,7 +60,15 @@ exports.retrieveProductListZYX = async function() {
   return productListResult;
 }
 
-exports.retrieveProduct = async function(productId){
+exports.retrieveProduct = async function (productId) {
+  const connection = await pool.getConnection(async (conn) => conn);
+  const productResult = await productDao.selectProduct(connection, productId);
+  connection.release;
+
+  return productResult;
+}
+
+exports.retrieveProductAndRec = async function (productId) {
   const connection = await pool.getConnection(async (conn) => conn);
   const productResult = await productDao.selectProductAndRec(connection, productId);
   connection.release;
@@ -69,7 +77,7 @@ exports.retrieveProduct = async function(productId){
 }
 
 
-exports.retrieveRecProduct = async function(productId){
+exports.retrieveRecProduct = async function (productId) {
   const connection = await pool.getConnection(async (conn) => conn);
   const productRecResult = await productDao.selectRecProduct(connection, productId);
   connection.release;
@@ -77,7 +85,7 @@ exports.retrieveRecProduct = async function(productId){
   return productRecResult;
 }
 
-exports.retrieveTopRecProduct = async function(productId){
+exports.retrieveTopRecProduct = async function (productId) {
   const connection = await pool.getConnection(async (conn) => conn);
   const productTopRecResult = await productDao.selectTopRecProduct(connection, productId);
   connection.release;
@@ -85,7 +93,7 @@ exports.retrieveTopRecProduct = async function(productId){
   return productTopRecResult;
 }
 
-exports.retrieveBaseRecProduct = async function(productId){
+exports.retrieveBaseRecProduct = async function (productId) {
   const connection = await pool.getConnection(async (conn) => conn);
   const productBaseRecResult = await productDao.selectBaseRecProduct(connection, productId);
   connection.release;
@@ -93,7 +101,7 @@ exports.retrieveBaseRecProduct = async function(productId){
   return productBaseRecResult;
 }
 
-exports.retrieveQuestionResult = async function(result){
+exports.retrieveQuestionResult = async function (result) {
   const connection = await pool.getConnection(async (conn) => conn);
   const questionResult = await productDao.selectQuestionResult(connection, result);
   connection.release;
@@ -102,7 +110,7 @@ exports.retrieveQuestionResult = async function(result){
 }
 
 
-exports.retrieveSearchResult = async function(keyword){
+exports.retrieveSearchResult = async function (keyword) {
   const connection = await pool.getConnection(async (conn) => conn);
   const searchResult = await productDao.selectSearchResult(connection, keyword);
   connection.release;

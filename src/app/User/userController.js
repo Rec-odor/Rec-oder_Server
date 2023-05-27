@@ -30,3 +30,17 @@ exports.getUserLikes = async function (req,res){
 
     return res.send(response(baseResponse.SUCCESS, userLikeResult));
 }
+
+exports.postUserLikes = async function (req, res){
+    const { userId, productId } = req.params;
+
+    const productLikeResponse = await userService.postProductLike(userId, productId);
+    return res.send(productLikeResponse);
+}
+
+exports.deleteUserLikes = async function (req, res){
+    const { userId, productId } = req.params;
+
+    const deleteLikeResponse = await userService.deleteUserLike(userId, productId);
+    return res.send(deleteLikeResponse);
+}
