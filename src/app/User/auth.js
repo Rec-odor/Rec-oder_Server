@@ -10,7 +10,7 @@ passport.use(
       clientID: secret.KAKAO_API_KEY,
       prompt: "login",
       callbackURL: secret.REDIRECT_URI,
-      clientSecret: secret.Client_Secret,
+      clientSecret: secret.CLIENT_SECRET,
     },
     async (accessToken, refreshToken, profile, done) => {
       const userToken = {
