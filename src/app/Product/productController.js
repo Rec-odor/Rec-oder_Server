@@ -92,7 +92,7 @@ exports.askQuestion = async function (req, res){
 
     if(!prompt)
         return res.send(response(baseResponse.FAILURE));              // 수정
-    const response = await callChatGPT(prompt);
+    const response = await callChatGPT(prompt +" 향수");
     const answer = await callChatGPT(response + "\n이 내용 100자 이내로 요약해줘");
 
     if(answer){
