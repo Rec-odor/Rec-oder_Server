@@ -9,9 +9,8 @@ exports.kakaoLogin = async function (req, res) {
     console.log("req.session ->", req.session);
     const userByUserId = await userProvider.retrieveUser(req.user.id); // 기존 회원 찾기
 
-    if (!userByUserId[0]) return res.redirect("/join");
+    if (!userByUserId) return res.redirect("/join");
 
-    console.log(userByUserId[0].nickname);
     return res.redirect("/startPage");
 };
 
