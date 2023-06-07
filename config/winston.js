@@ -42,6 +42,13 @@ const logger = createLogger({
     ]
 });
 
+const stream = {
+    write: message => {
+      logger.info(message.trim())
+    }
+  }
+
 module.exports = {
-    logger: logger
+    logger: logger,
+    stream: stream
 };

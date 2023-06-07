@@ -5,6 +5,8 @@ const passport = require("passport");
 const cookieParser = require("cookie-parser");
 const session = require("express-session");
 var cors = require('cors');
+const morgan = require('morgan');
+const {stream} = require('./winston');
 
 
 module.exports = function () {
@@ -31,6 +33,7 @@ module.exports = function () {
   app.use(passport.session());
 
   app.use(cors());
+  app.use(morgan('dev', {stream}));
   // app.use(express.static(process.cwd() + '/public'));
 
   require('../src/app/User/userRoute')(app);
