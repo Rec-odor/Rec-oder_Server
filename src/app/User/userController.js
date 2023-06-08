@@ -11,7 +11,7 @@ exports.kakaoLogin = async function (req, res) {
 
     if (!userByUserId) return res.redirect("/join");
 
-    return res.send(response(baseResponse.SUCCESS));
+    return res.redirect("http://localhost:3000");
 };
 
 exports.kakaoLogout = async function (req, res) {
@@ -19,7 +19,7 @@ exports.kakaoLogout = async function (req, res) {
         if (err) {
             console.log(err);
         }
-        return res.send(response(baseResponse.SUCCESS));
+        return res.redirect("http://localhost:3000");
     });
 };
 
