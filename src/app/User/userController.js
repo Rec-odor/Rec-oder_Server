@@ -24,8 +24,7 @@ exports.kakaoLogout = async function (req, res) {
 };
 
 exports.getUserLikes = async function (req,res){
-    const userId = req.params.userId;
-    const userLikeResult = await userProvider.retrieveUserLikes(userId);     
+    const userLikeResult = await userProvider.retrieveUserLikes(req.user.id);     
 
     return res.send(response(baseResponse.SUCCESS, userLikeResult));
 }

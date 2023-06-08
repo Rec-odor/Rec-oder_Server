@@ -23,7 +23,7 @@ module.exports = function (app) {
     // GET 로그아웃
     app.get("/auth/logout", user.kakaoLogout);
 
-    app.get("/likes/:userId", user.getUserLikes);
+    app.get("/likes", user.getUserLikes);
     app.post("/likes/:userId/:productId", user.postUserLikes);
     app.delete("/likes/:userId/:productId", user.deleteUserLikes);
 

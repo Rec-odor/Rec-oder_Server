@@ -22,8 +22,8 @@ passport.use(
   )
 );
 
-passport.serializeUser(function (data, done) {
-  done(null, data);
+passport.serializeUser(function (user, done) {
+  done(null, user);
 });
 
 passport.deserializeUser(function (user, done) {
