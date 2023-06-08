@@ -11,7 +11,7 @@ exports.kakaoLogin = async function (req, res) {
 
     if (!userByUserId) return res.redirect("/join");
 
-    return res.redirect("/");
+    return res.send(response(baseResponse.SUCCESS));
 };
 
 exports.kakaoLogout = async function (req, res) {
