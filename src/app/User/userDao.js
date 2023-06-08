@@ -12,11 +12,10 @@ async function selectUserId(connection, userId) {
 // 좋아요한 목록 조회
 async function selectUserLikes(connection, userId) {
   const selectUserLikesQuery = `
-    SELECT p.ProductID, p.Name, pimg.ImageURL, p.hits
-    FROM Product_Image pimg
-    JOIN UserLike ul ON pimg.ProductID = ul.ProductID
-    JOIN Product p ON p.ProductID = ul.ProductID
-    WHERE ul.UserID = ${userId};
+    SELECT P.ProductID, P.Name, P.ImageURL
+    FROM Product P
+    JOIN UserLike UL ON P.ProductID = UL.ProductID
+    WHERE UL.UserID = ${userId};
   `;
   const [userLikesRow] = await connection.query(selectUserLikesQuery, userId);
   return userLikesRow;
