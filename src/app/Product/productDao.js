@@ -228,9 +228,16 @@ async function updateProductHits(connection, productId) {
 // 설문 결과 조회
 async function selectQuestionResult(connection, result) {
   const selectProductQuery = `
-    SELECT P.ProductID, Name, Top, Middle, Base, Brand, Price, Description
-    FROM Product P, TestResult T
-    WHERE P.ProductID = T.ProductID and T.Result = '${result}';
+    SELECT RP.ProductID, RP.Rec1, P1.Name AS Rec1_Name, P1.ImageURL AS Rec1_ImageURL,
+      RP.Rec2, P2.Name AS Rec2_Name, P2.ImageURL AS Rec2_ImageURL,
+      RP.Rec3, P3.Name AS Rec3_Name, P3.ImageURL AS Rec3_ImageURL
+    FROM TestResult TR
+      LEFT JOIN RecProduct RP ON TR.ProductID = RP.ProductID
+      LEFT JOIN Product P ON TR.ProductID = P.ProductID
+      LEFT JOIN Product P1 ON RP.Rec1 = P1.ProductID
+      LEFT JOIN Product P2 ON RP.Rec2 = P2.ProductID
+      LEFT JOIN Product P3 ON RP.Rec3 = P3.ProductID
+    WHERE TR.Result = '${result}';
   `;
   const [questionResultInfo] = await connection.query(selectProductQuery, result);
   return questionResultInfo[0];
