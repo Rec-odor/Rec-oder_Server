@@ -19,7 +19,7 @@ exports.kakaoLogout = async function (req, res) {
         if (err) {
             console.log(err);
         }
-        return res.redirect("/");
+        return res.send(response(baseResponse.SUCCESS));
     });
 };
 
@@ -30,15 +30,15 @@ exports.getUserLikes = async function (req,res){
 }
 
 exports.postUserLikes = async function (req, res){
-    const { userId, productId } = req.params;
+    const productId = req.params.productId;
 
-    const productLikeResponse = await userService.postProductLike(userId, productId);
+    const productLikeResponse = await userService.postProductLike(req.user.id, productId);
     return res.send(productLikeResponse);
 }
 
 exports.deleteUserLikes = async function (req, res){
-    const { userId, productId } = req.params;
+    const productId = req.params.productId;
 
-    const deleteLikeResponse = await userService.deleteUserLike(userId, productId);
+    const deleteLikeResponse = await userService.deleteUserLike(req.user.id, productId);
     return res.send(deleteLikeResponse);
 }
