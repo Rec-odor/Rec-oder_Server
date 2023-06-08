@@ -228,7 +228,9 @@ async function updateProductHits(connection, productId) {
 // 설문 결과 조회
 async function selectQuestionResult(connection, result) {
   const selectProductQuery = `
-    SELECT RP.ProductID, RP.Rec1, P1.Name AS Rec1_Name, P1.ImageURL AS Rec1_ImageURL,
+    SELECT RP.ProductID, P.Name As Name, P.ImageURL As ImageURL, 
+      P.Top, P.Middle, P.Base, P.Brand as Brand, P.Price as Price,
+      RP.Rec1, P1.Name AS Rec1_Name, P1.ImageURL AS Rec1_ImageURL,
       RP.Rec2, P2.Name AS Rec2_Name, P2.ImageURL AS Rec2_ImageURL,
       RP.Rec3, P3.Name AS Rec3_Name, P3.ImageURL AS Rec3_ImageURL
     FROM TestResult TR
