@@ -24,21 +24,22 @@ exports.kakaoLogout = async function (req, res) {
 };
 
 exports.getUserLikes = async function (req,res){
-    const userLikeResult = await userProvider.retrieveUserLikes(req.user.id);     
+    const userId = req.params.userId;
+    const userLikeResult = await userProvider.retrieveUserLikes(userId);     
 
     return res.send(response(baseResponse.SUCCESS, userLikeResult));
 }
 
 exports.postUserLikes = async function (req, res){
-    const productId = req.params.productId;
+    const { userId, productId } = req.params;
 
-    const productLikeResponse = await userService.postProductLike(req.user.id, productId);
+    const productLikeResponse = await userService.postProductLike(userId, productId);
     return res.send(productLikeResponse);
 }
 
 exports.deleteUserLikes = async function (req, res){
-    const productId = req.params.productId;
+    const { userId, productId } = req.params;
 
-    const deleteLikeResponse = await userService.deleteUserLike(req.user.id, productId);
+    const deleteLikeResponse = await userService.deleteUserLike(userId, productId);
     return res.send(deleteLikeResponse);
 }
