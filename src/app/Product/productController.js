@@ -71,8 +71,7 @@ exports.getProduct = async function (req, res){
 // 설문 결과 조회
 exports.getQuestionResult = async function (req, res){
 
-    let param = "" + req.params.result;
-    const result = param.substring(0, 2);
+    const result = req.params.result;
     const questionResult = await productProvider.retrieveQuestionResult(result);
 
     return res.send(response(baseResponse.SUCCESS, questionResult));
